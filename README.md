@@ -1,13 +1,63 @@
 ember-on-modifier-sugar
 ==============================================================================
 
-[Short description of the addon.]
+This addon provides syntax sugar for `on` and `fn` modifiers usage.
+
+```hbs
+<button (click)="this.onClick(1, null, true, false, undefined, 'str')">
+  ClickMe
+</button>
+```
+
+will be transformed to
+
+```hbs
+<button {{on "click" (fn this.onClick 1 null true false undefined "str") }}>
+  ClickMe
+</button>
+```
+
+Simple expressions, like
+
+```hbs
+<button (click)="this.onClick()">
+  ClickMe
+</button>
+```
+
+will be transformed to
+
+```hbs
+<button {{on "click" this.onClick}}>
+  ClickMe
+</button>
+```
+
+---
+
+Restrictions
+----
+
+This is `Not` JavaScript! This code will not work:
+
+```hbs
+<button 
+    (click)="this.onClick();"
+    (click)="this.onClick(...attrs)"
+    (click)="this.onClick(...attrs, 3 + 2)"
+    (click)="this.onClick(...attrs, this.hello())"
+    (click)="this.onClick(...attrs, (helper (anover helper)))"
+>
+  ClickMe
+</button>
+
+```
 
 
 Compatibility
 ------------------------------------------------------------------------------
 
-* Ember.js v2.18 or above
+* Ember.js v3.10 or above
 * Ember CLI v2.13 or above
 * Node.js v8 or above
 
@@ -23,8 +73,7 @@ ember install ember-on-modifier-sugar
 Usage
 ------------------------------------------------------------------------------
 
-[Longer description of how to use the addon in apps.]
-
+Just install it and use simple event bindings!
 
 Contributing
 ------------------------------------------------------------------------------
