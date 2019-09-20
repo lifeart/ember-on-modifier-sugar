@@ -3,6 +3,24 @@ ember-on-modifier-sugar
 
 This addon provides syntax sugar for `on` and `fn` modifiers usage.
 
+
+```hbs
+<button (click)={{this.onClick "Hello"}} >
+  ClickMe
+</button>
+```
+
+to
+
+```hbs
+<button  {{on "click" (fn this.onClick "Hello")}} >
+  ClickMe
+</button>
+```
+
+also, string angular-like notation supported:
+
+
 ```hbs
 <button (click)="this.onClick(1, null, true, false, undefined, 'str')">
   ClickMe
