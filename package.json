@@ -1,6 +1,6 @@
 {
   "name": "ember-on-modifier-sugar",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Syntax sugar for simple on modifier usecases",
   "keywords": [
     "ember-addon"
